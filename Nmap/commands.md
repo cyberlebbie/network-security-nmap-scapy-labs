@@ -1,3 +1,8 @@
+###############################################################################################
+# This file is created by Mohamed Lebbie as part of the practical lab assignment              #
+#                                                                                             #
+###############################################################################################
+
 # Nmap Commands Documentation
 
 This file lists all Nmap commands used during the practical lab exercises, along with a brief explanation of each command.
@@ -8,6 +13,9 @@ This file lists all Nmap commands used during the practical lab exercises, along
 ```bash
 # Ping scan to discover live hosts in the subnet
 nmap -sN 10.6.6.0/24
+
+# Performs a ping sweep on the entire 10.6.6.0/24 network to identify live hosts without scanning ports.
+nmap -sn 10.6.6.0/24
 ```
 
 # Port Scanning
@@ -43,6 +51,9 @@ nmap --script http-title 10.6.6.23
 
 # Get SSH host keys
 nmap --script ssh-hostkey 10.6.6.23
+
+# Enumerates SMB shares on the target, showing shared folders, permissions, and anonymous access status.
+nmap --script smb-enum-shares.nse -p445 10.6.6.23
 ```
 
 # Aggressive Scan
@@ -53,13 +64,5 @@ nmap -A 10.6.6.23
 # Aggressive scan on port 21 with OS detection, version detection, script scanning, and traceroute
 nmap -p21 -sV -A -T4 10.6.6.23
 
-
-
-nmap -sN 10.6.6.0/24
-nmap -sS 10.6.6.0/24
-nmap -sV 10.6.6.23
-nmap -sn 10.6.6.0/24
-sudo nmap -O 10.6.6.23
-
-nmap -A p139, p445 10.6.6.23
-nmap --script smb-enum-shares.nse -p445 10.6.6.23
+# Aggressive scan on SMB ports 139 and 445 to detect OS, services, versions, and run default scripts.
+nmap -A -p139,445 10.6.6.23
