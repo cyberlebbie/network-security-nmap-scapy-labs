@@ -24,29 +24,32 @@ scapy
 # Start sniffing on all interfaces (unfiltered)
 sniff()
 
+Generate traffic in a separate terminal:
+ping google.com
+Stop sniffing with Ctrl + C
+
 # Save captured packets
 paro = _
 paro.summary()
 ```
 
-Generate traffic in a separate terminal:
-ping google.com
-Stop sniffing with Ctrl + C
 
 #Interface-Specific Sniffing
 ```python
 # Sniff on the internal bridge interface
 sniff(iface="br-internal")
 
+Generate network traffic:
+ping 10.6.6.1
+Then visit in browser:
+http://10.6.6.23
+
 # Save and summarize captured packets
 paro2 = _
 paro2.summary()
 ```
 
-Generate network traffic:
-ping 10.6.6.1
-Then visit in browser:
-http://10.6.6.23
+
 
 # Filtered Capture – ICMP Packets
 ```python
